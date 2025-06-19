@@ -56,6 +56,7 @@ const Homepage: React.FC = () => {
         return { ...task, status: order[newIdx] };
       })
     );
+  };
   //To add New task 
    const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
@@ -72,9 +73,6 @@ const Homepage: React.FC = () => {
     setNewTask({ text: '', description: '', priority: 'Medium', status: 'todo' });
   };
   
-
-  
-  };
 
   return (
     <>
@@ -233,20 +231,16 @@ const Homepage: React.FC = () => {
           name="text"
           id="taskText"
           value={newTask.text}
-          onChange={(e) =>
-            setNewTask((prev) => ({ ...prev, [e.target.name]: e.target.value }))
-          }
+          onChange={handleInputChange}
           placeholder="Enter task title"
         />
 
-        <label htmlFor="taskDescription"><span className='desc' >Description </span></label>
+        <label htmlFor="taskDescription"><span className='desc'>Description</span></label>
         <textarea
           name="description"
           id="taskDescription"
           value={newTask.description}
-          onChange={(e) =>
-            setNewTask((prev) => ({ ...prev, [e.target.name]: e.target.value }))
-          }
+          onChange={handleInputChange}
           placeholder="Enter task description"
         ></textarea>
 
@@ -257,9 +251,7 @@ const Homepage: React.FC = () => {
               name="priority"
               id="taskPriority"
               value={newTask.priority}
-              onChange={(e) =>
-                setNewTask((prev) => ({ ...prev, [e.target.name]: e.target.value }))
-              }
+              onChange={handleInputChange}
             >
               <option value="High">1 (High)</option>
               <option value="Medium">2 (Medium)</option>
@@ -272,9 +264,7 @@ const Homepage: React.FC = () => {
               name="status"
               id="taskStatus"
               value={newTask.status}
-              onChange={(e) =>
-                setNewTask((prev) => ({ ...prev, [e.target.name]: e.target.value }))
-              }
+              onChange={handleInputChange}
             >
               <option value="todo">To Do</option>
               <option value="inprogress">In Progress</option>
@@ -285,34 +275,12 @@ const Homepage: React.FC = () => {
       </div>
       <div className="modal-footer">
         <button onClick={() => setShowModal(false)}>Cancel</button>
-        <button
-          className="create-btn"
-          onClick={() => {
-            const newId = tasks.length ? Math.max(...tasks.map((t) => t.id)) + 1 : 1;
-            setTasks([
-              ...tasks,
-              {
-                id: newId,
-                text: newTask.text,
-                priority: newTask.priority,
-                status: newTask.status,
-              },
-            ]);
-            setShowModal(false);
-            setNewTask({
-              text: '',
-              description: '',
-              priority: 'Medium',
-              status: 'todo',
-            });
-          }}
-        >
-          Create Task
-        </button>
+        <button className="create-btn" onClick={addTask}>Create Task</button>
       </div>
     </div>
   </div>
 )}
+
 
       <Footer />
     </>
