@@ -227,7 +227,7 @@ const Homepage: React.FC = () => {
         <button className="close-btn" onClick={() => setShowModal(false)}>×</button>
       </div>
       <div className="modal-body">
-        <label htmlFor="taskText">Title</label>
+        <label htmlFor="taskText"><span className='title'>Title</span></label>
         <input
           type="text"
           name="text"
@@ -239,7 +239,7 @@ const Homepage: React.FC = () => {
           placeholder="Enter task title"
         />
 
-        <label htmlFor="taskDescription">Description</label>
+        <label htmlFor="taskDescription"><span className='desc' >Description </span></label>
         <textarea
           name="description"
           id="taskDescription"

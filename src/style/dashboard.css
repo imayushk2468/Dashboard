@@ -261,7 +261,9 @@
   justify-content: center;
   z-index: 99;
 }
-
+.desc,.title{
+    color: #00000099;
+}
 .modal {
   background: white;
   padding: 24px;
