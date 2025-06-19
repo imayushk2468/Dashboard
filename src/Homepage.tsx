@@ -26,6 +26,7 @@ const Homepage: React.FC = () => {
     id: number;
     text: string;
     status: TaskStatus;
+    description?: string;
     priority: TaskPriority;
   };
 
@@ -158,7 +159,8 @@ const Homepage: React.FC = () => {
                       <button onClick={() => moveTask(task.id, 'right')} className="arrow-btn">→</button>
                     </div>
                   </div>
-                  <div>{task.text}</div>
+                  <div> <strong>{task.text}</strong>
+  {task.description && <p className="description">{task.description}</p>}</div>
                 </div>
               ))}
           </div>
@@ -185,7 +187,8 @@ const Homepage: React.FC = () => {
                       <button onClick={() => moveTask(task.id, 'right')} className="arrow-btn">→</button>
                     </div>
                   </div>
-                  <div>{task.text}</div>
+                  <div> <strong>{task.text}</strong>
+  {task.description && <p className="description">{task.description}</p>}</div>
                 </div>
               ))}
           </div>
@@ -211,7 +214,8 @@ const Homepage: React.FC = () => {
                       <button onClick={() => moveTask(task.id, 'left')} className="arrow-btn">←</button>
                     </div>
                   </div>
-                  <div>{task.text}</div>
+                  <div><strong>{task.text}</strong>
+  {task.description && <p className="description">{task.description}</p>}</div>
                 </div>
               ))}
           </div>
@@ -281,7 +285,7 @@ const Homepage: React.FC = () => {
   </div>
 )}
 
-
+F
       <Footer />
     </>
   );
